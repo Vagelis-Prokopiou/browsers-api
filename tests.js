@@ -14,7 +14,7 @@ describe("Array", function() {
 		  return Array.from(arguments);
 		}
 
-		it("should  creates a new Array instance from an array-like or iterable object", () =>
+		it("should create a new Array instance from an array-like or iterable object", () =>
 		{
 		  expect(Array.from(["a", "b", "c"])).toEqual(["a", "b", "c"]);
 		  expect(Array.from('foo')).toEqual(["f", "o", "o"]);
@@ -23,6 +23,18 @@ describe("Array", function() {
 		  expect(f(1, 2, 3)).toEqual([1,2,3]);
 		  expect(Array.from([1, 2, 3], x => x + x)).toEqual([2,4,6]);
 		  expect(Array.from({length: 5}, (v, i) => i)).toEqual([0, 1, 2, 3, 4]);
+		});
+	});
+
+	describe("Array.isArray()", () => 
+	{
+		it("should determine whether the passed value is an Array", () =>
+		{
+		  expect(Array.isArray([1, 2, 3])).toEqual(true);
+		  expect(Array.isArray({foo: 123})).toEqual(false);
+		  expect(Array.isArray('foobar')).toEqual(false);
+		  expect(Array.isArray(undefined)).toEqual(false);
+		  expect(Array.isArray({ __proto__: Array.prototype })).toEqual(false);
 		});
 	});
 
