@@ -79,4 +79,16 @@ describe("Array", function() {
 		});
 	});
 
+	describe("Array.prototype.entries()", () => 
+	{
+		it("should return a new Array Iterator object that contains the key/value pairs for each index in the array", () =>
+		{
+			var a = ['a', 'b', 'c'];
+			var iterator = a.entries();
+			expect(iterator.next().value).toEqual([0, 'a']);
+			expect(iterator.next().value).toEqual([1, 'b']);
+			expect(iterator.next().value).toEqual([2, 'c']);
+		});
+	});
+
 });
