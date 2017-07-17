@@ -48,4 +48,22 @@ describe("Array", function() {
 		});
 	});
 
+	describe("Array.prototype.concat()", () => 
+	{
+		it("should  merge two or more arrays into a new array", () =>
+		{
+			var arr1 = ['a', 'b', 'c'];
+			var arr2 = ['d', 'e', 'f'];
+			var alpha = ['a', 'b', 'c'];
+			var numeric = [1, 2, 3];
+			var num1 = [[1]];
+			var num2 = [2, [3]];
+			var nums = num1.concat(num2);
+			num1[0].push(4);
+			expect(arr1.concat(arr2)).toEqual([ "a", "b", "c", "d", "e", "f" ]);
+			expect(alpha.concat(numeric)).toEqual(['a', 'b', 'c', 1, 2, 3]);
+			expect(nums).toEqual([[1, 4], 2, [3]]);
+		});
+	});
+
 });
