@@ -170,4 +170,27 @@ describe("Array", function() {
 		});
 	});
 
+	describe("Array.prototype.find()", () => 
+	{
+		it("should return the value of the first element in the array that satisfies the provided testing function, else, undefined", () =>
+		{
+			function isBigEnough(element) 
+			{
+			  return element >= 15;
+			}
+			function findCherries(fruit) 
+			{ 
+			    return fruit.name === 'cherries';
+			}
+			var inventory = [
+			    {name: 'apples', quantity: 2},
+			    {name: 'bananas', quantity: 0},
+			    {name: 'cherries', quantity: 5}
+			];
+			
+			expect([12, 5, 8, 130, 44].find(isBigEnough)).toEqual(130);
+			expect(inventory.find(findCherries)).toEqual({ name: 'cherries', quantity: 5 });
+		});
+	});
+
 });
