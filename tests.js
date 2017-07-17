@@ -121,4 +121,53 @@ describe("Array", function() {
 		});
 	});
 
+	describe("Array.prototype.filter()", () => 
+	{
+		it("should create a new array with all elements that pass the test implemented by the provided function", () =>
+		{
+			function isBigEnough(value) 
+			{
+  				return value >= 10;
+			}
+			function isNumber(obj) 
+			{
+				return obj !== undefined && typeof(obj) === "number" && !isNaN(obj);
+			}
+			function filterByID(item) {
+				if (isNumber(item.id)) {
+			  		return true;
+				} 
+				invalidEntries++;
+				return false; 
+			}
+			function filterItems(query) {
+			  return fruits.filter(function(el) {
+			      return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
+			  })
+			}
+
+
+			var arr = [
+			  { id: 15 },
+			  { id: -1 },
+			  { id: 0 },
+			  { id: 3 },
+			  { id: 12.2 },
+			  { },
+			  { id: null },
+			  { id: NaN },
+			  { id: "undefined" }
+			];
+			var fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
+			var invalidEntries = 0;
+			var expected = [{ id: 15 }, { id: -1 }, { id: 0 }, { id: 3 }, { id: 12.2 }];
+			var actual = arr.filter(filterByID);
+
+			expect(actual).toEqual(expected);
+			expect(invalidEntries).toEqual(4);
+			expect(filterItems('ap')).toEqual(['apple', 'grapes']);
+			expect(filterItems('an')).toEqual(['banana', 'mango', 'orange']);
+		});
+	});
+
 });
