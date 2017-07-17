@@ -94,7 +94,7 @@ describe("Array", function() {
 
 	describe("Array.prototype.every()", () => 
 	{
-		it("should test whether all elements in the array pass the test implemented by the provided function.", () =>
+		it("should test whether all elements in the array pass the test implemented by the provided function", () =>
 		{
 			function isBigEnough(element, index, array)
 			{
@@ -103,6 +103,21 @@ describe("Array", function() {
 
 			expect([12, 5, 8, 130, 44].every(isBigEnough)).toEqual(false);
 			expect([12, 54, 18, 130, 44].every(isBigEnough)).toEqual(true);
+		});
+	});
+
+	describe("Array.prototype.fill()", () => 
+	{
+		it("should fill all the elements of an array from a start index to an end index with a static value", () =>
+		{
+			expect([1, 2, 3].fill(4)).toEqual([4, 4, 4]);
+			expect([1, 2, 3].fill(4, 1)).toEqual([1, 4, 4]);
+			expect([1, 2, 3].fill(4, 1, 2)).toEqual([1, 4, 3]);
+			expect([1, 2, 3].fill(4, 1, 1)).toEqual([1, 2, 3]);
+			expect([1, 2, 3].fill(4, -3, -2)).toEqual([4, 2, 3]);
+			expect([1, 2, 3].fill(4, NaN, NaN)).toEqual([1, 2, 3]);
+			expect(Array(3).fill(4)).toEqual([4, 4, 4]);
+			expect([].fill.call({ length: 3 }, 4)).toEqual({0: 4, 1: 4, 2: 4, length: 3});
 		});
 	});
 
