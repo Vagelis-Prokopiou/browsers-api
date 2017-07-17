@@ -66,4 +66,17 @@ describe("Array", function() {
 		});
 	});
 
+	describe("Array.prototype.copyWithin()", () => 
+	{
+		it("should shallow copy part of an array to another location in the same array and returns it, without modifying its size", () =>
+		{
+			expect(['alpha', 'bravo', 'charlie', 'delta'].copyWithin(2, 0)).toEqual(["alpha", "bravo", "alpha", "bravo"]);
+			expect([1, 2, 3, 4, 5].copyWithin(-2)).toEqual([1, 2, 3, 1, 2]);
+			expect([1, 2, 3, 4, 5].copyWithin(0, 3)).toEqual([4, 5, 3, 4, 5]);
+			expect([1, 2, 3, 4, 5].copyWithin(0, 3, 4)).toEqual([4, 2, 3, 4, 5]);
+			expect([1, 2, 3, 4, 5].copyWithin(-2, -3, -1)).toEqual([1, 2, 3, 3, 4]);
+			expect([].copyWithin.call({length: 5, 3: 1}, 0, 3)).toEqual({0: 1, 3: 1, length: 5});
+		});
+	});
+
 });
