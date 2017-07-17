@@ -38,4 +38,14 @@ describe("Array", function() {
 		});
 	});
 
+	describe("Array.of()", () => 
+	{
+		it("should create a new Array instance with a variable number of arguments, regardless of number or type of the arguments", () =>
+		{
+		  expect(Array.of(1)).toEqual([1]);
+		  expect(Array.of(1, 2, 3)).toEqual([1, 2, 3]);
+		  expect(Array.of(undefined)).toEqual([undefined]);
+		});
+	});
+
 });
