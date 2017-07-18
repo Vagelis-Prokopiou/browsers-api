@@ -262,9 +262,23 @@
 				const a = ['a', , 'c'];
 				const sparseKeys = Object.keys(a);
 				const denseKeys = [...a.keys()];
-				
+
 				expect(sparseKeys).toEqual(['0', '2']);
 				expect(denseKeys).toEqual([0, 1, 2]);
+			});
+		});
+
+		describe("Array.prototype.lastIndexOf()", () => 
+		{
+			it("should return the last index at which a given element can be found in the array, or -1 if it is not present", () =>
+			{
+				const numbers = [2, 5, 9, 2];
+				expect(numbers.lastIndexOf(2)).toEqual(3);
+				expect(numbers.lastIndexOf(7)).toEqual(-1);
+				expect(numbers.lastIndexOf(2, 3)).toEqual(3);
+				expect(numbers.lastIndexOf(2, 2)).toEqual(0);
+				expect(numbers.lastIndexOf(2, -2)).toEqual(0);
+				expect(numbers.lastIndexOf(2, -1)).toEqual(3);
 			});
 		});
 
