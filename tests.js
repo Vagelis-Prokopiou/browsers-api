@@ -235,5 +235,17 @@
 			});
 		});
 
+		describe("Array.prototype.join()", () => 
+		{
+			it("should join all elements of an array (or an array-like object) into a string", () =>
+			{
+				const a = ['Wind', 'Rain', 'Fire'];
+				expect(a.join()).toEqual('Wind,Rain,Fire');
+				expect(a.join(', ')).toEqual('Wind, Rain, Fire');
+				expect(a.join(' + ')).toEqual('Wind + Rain + Fire');
+				expect(a.join('')).toEqual('WindRainFire');
+			});
+		});
+
 	});
 })();
