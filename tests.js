@@ -1,11 +1,11 @@
-(function ()
+(function()
 {
-	const isBigEnough = function (element)
+	const isBigEnough = element =>
 	{
 		return element >= 15;
 	}
 
-	describe("Array", function ()
+	describe("Array", () =>
 	{
 
 		describe("Array.length", () =>
@@ -20,7 +20,7 @@
 		{
 			it("should create a new Array instance from an array-like or iterable object", () =>
 			{
-				function f()
+				const f = function()
 				{
 					return Array.from(arguments);
 				}
@@ -130,11 +130,11 @@
 		{
 			it("should create a new array with all elements that pass the test implemented by the provided function", () =>
 			{
-				const isNumber = function (obj)
+				const isNumber = function(obj)
 				{
 					return obj !== undefined && typeof (obj) === "number" && !isNaN(obj);
 				}
-				const filterByID = function (item)
+				const filterByID = function(item)
 				{
 					if (isNumber(item.id))
 					{
@@ -143,9 +143,9 @@
 					invalidEntries++;
 					return false;
 				}
-				const filterItems = function (query)
+				const filterItems = function(query)
 				{
-					return fruits.filter(function (el)
+					return fruits.filter(function(el)
 					{
 						return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
 					})
@@ -178,7 +178,7 @@
 		{
 			it("should return the value of the first element in the array that satisfies the provided testing function, else, undefined", () =>
 			{
-				function findCherries(fruit)
+				const findCherries = function(fruit)
 				{
 					return fruit.name === 'cherries';
 				}
@@ -209,7 +209,7 @@
 			{
 				const items = ['item1', 'item2', 'item3'];
 				let copiedItems = [];
-				items.forEach(function (item)
+				items.forEach(function(item)
 				{
 					copiedItems.push(item)
 				});
@@ -303,7 +303,7 @@
 					{ key: 3, value: 30 }
 				];
 
-				const reformattedArray = kvArray.map(function (obj)
+				const reformattedArray = kvArray.map(function(obj)
 				{
 					var rObj = {};
 					rObj[obj.key] = obj.value;
@@ -357,18 +357,18 @@
 		{
 			it("should apply a function against an accumulator and each element in the array (from left to right) to reduce it to a single value", () =>
 			{
-				var total = [0, 1, 2, 3].reduce(function (sum, value)
+				var total = [0, 1, 2, 3].reduce(function(sum, value)
 				{
 					return sum + value;
 				}, 0);
 
-				var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function (a, b)
+				var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b)
 				{
 					return a.concat(b);
 				}, []);
 				var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
 
-				var countedNames = names.reduce(function (allNames, name)
+				var countedNames = names.reduce(function(allNames, name)
 				{
 					if (name in allNames)
 					{
@@ -394,7 +394,7 @@
 					age: 18
 				}];
 
-				var allbooks = friends.reduce(function (prev, curr)
+				var allbooks = friends.reduce(function(prev, curr)
 				{
 					return [...prev, ...curr.books];
 				}, ['Alphabet']);
@@ -415,11 +415,11 @@
 		{
 			it("should apply a function against an accumulator and each value of the array (from right-to-left) to reduce it to a single value", () =>
 			{
-				var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function (a, b)
+				var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b)
 				{
 					return a.concat(b);
 				}, []);
-				var sum = [0, 1, 2, 3].reduceRight(function (a, b)
+				var sum = [0, 1, 2, 3].reduceRight(function(a, b)
 				{
 					return a + b;
 				});
