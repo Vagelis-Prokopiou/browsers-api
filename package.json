@@ -9,6 +9,9 @@
   "author": "Vagelis Prokopiou",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^4.2.0"
+  },
+  "dependencies": {
     "jasmine-core": "^2.6.4",
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.2.0",
