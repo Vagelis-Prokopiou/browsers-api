@@ -380,11 +380,34 @@
 					}
 					return allNames;
 				}, {});
+				var friends = [{
+					name: 'Anna',
+					books: ['Bible', 'Harry Potter'],
+					age: 21
+				}, {
+					name: 'Bob',
+					books: ['War and peace', 'Romeo and Juliet'],
+					age: 26
+				}, {
+					name: 'Alice',
+					books: ['The Lord of the Rings', 'The Shining'],
+					age: 18
+				}];
+
+				var allbooks = friends.reduce(function (prev, curr)
+				{
+					return [...prev, ...curr.books];
+				}, ['Alphabet']);
 
 				expect(total).toEqual(6);
 				expect(flattened).toEqual([0, 1, 2, 3, 4, 5]);
 				expect([0, 1, 2, 3, 4].reduce((prev, curr) => prev + curr)).toEqual(10);
 				expect(countedNames).toEqual({ 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 });
+				expect(allbooks).toEqual([
+					'Alphabet', 'Bible', 'Harry Potter', 'War and peace',
+					'Romeo and Juliet', 'The Lord of the Rings',
+					'The Shining'
+				]);
 			});
 		});
 
