@@ -210,5 +210,17 @@
 			});
 		});
 
+		describe("Array.prototype.includes()", () => 
+		{
+			it("should determine whether an array includes a certain element, returning true or false as appropriate", () =>
+			{
+				expect([1, 2, 3].includes(2)).toEqual(true);
+				expect([1, 2, 3].includes(4)).toEqual(false);
+				expect([1, 2, 3].includes(3, 3)).toEqual(false);
+				expect([1, 2, 3].includes(3, -1)).toEqual(true);
+				expect([1, 2, NaN].includes(NaN)).toEqual(true);
+			});
+		});
+
 	});
 })();
