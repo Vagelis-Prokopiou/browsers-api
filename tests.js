@@ -187,12 +187,26 @@
 			});
 		});
 
-		xdescribe("Array.prototype.findIndex()", () => 
+		describe("Array.prototype.findIndex()", () => 
 		{
 			it("should return the index of the first element in the array that satisfies the provided testing function, or -1", () =>
 			{
 				expect([12, 5, 8, 130, 44].findIndex(isBigEnough)).toEqual(3);
 				expect([12, 5, 8].findIndex(isBigEnough)).toEqual(-1);
+			});
+		});
+
+		describe("Array.prototype.forEach()", () => 
+		{
+			it("should execute a provided function once for each array element", () =>
+			{
+				const items = ['item1', 'item2', 'item3'];
+				let copiedItems = [];
+				items.forEach(function(item){
+					copiedItems.push(item)
+				});	
+
+				expect(copiedItems).toEqual(items);
 			});
 		});
 
