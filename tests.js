@@ -335,5 +335,23 @@
 			});
 		});
 
+		describe("Array.prototype.push()", () =>
+		{
+			it("should add one or more elements to the end of an array and return the new length of the array", () =>
+			{
+				var sports = ['soccer', 'baseball'];
+				var total = sports.push('football', 'swimming');
+
+				expect(sports).toEqual(['soccer', 'baseball', 'football', 'swimming']);
+				expect(total).toEqual(4);
+
+				var vegetables = ['parsnip', 'potato'];
+				var moreVegs = ['celery', 'beetroot'];
+
+				Array.prototype.push.apply(vegetables, moreVegs);
+				expect(vegetables).toEqual(['parsnip', 'potato', 'celery', 'beetroot']);
+			});
+		});
+
 	});
 })();
