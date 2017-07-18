@@ -429,5 +429,16 @@
 			});
 		});
 
+		describe("Array.prototype.reverse()", () =>
+		{
+			it("should reverse an array in place", () =>
+			{
+				var a = ['one', 'two', 'three'];
+				a.reverse();
+
+				expect(a).toEqual(['three', 'two', 'one']);
+			});
+		});
+
 	});
 })();
