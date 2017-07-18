@@ -282,5 +282,31 @@
 			});
 		});
 
+		describe("Array.prototype.map()", () => 
+		{
+			it("should create a new array with the results of calling a provided function on every element in the calling array", () =>
+			{
+				const numbers = [1, 4, 9];
+				const roots = numbers.map(Math.sqrt);
+				const kvArray = [
+					{key: 1, value: 10}, 
+               		{key: 2, value: 20}, 
+					{key: 3, value: 30}
+				];
+
+				const reformattedArray = kvArray.map(function(obj) { 
+					var rObj = {};
+					rObj[obj.key] = obj.value;
+					return rObj;
+				});
+
+				expect(numbers).toEqual([1, 4, 9]);
+				expect(roots).toEqual([1, 2, 3]);
+				
+				expect(kvArray).toEqual([ {key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30} ]);
+				expect(reformattedArray).toEqual([{1: 10}, {2: 20}, {3: 30}]);
+			});
+		});
+
 	});
 })();
