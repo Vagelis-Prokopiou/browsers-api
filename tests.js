@@ -21,7 +21,7 @@
 			{
 				function f() 
 				{
-				return Array.from(arguments);
+					return Array.from(arguments);
 				}
 
 				expect(Array.from(["a", "b", "c"])).toEqual(["a", "b", "c"]);
@@ -29,7 +29,7 @@
 				expect(Array.from(new Set(['foo', window]))).toEqual(['foo', window]);
 				expect(Array.from(new Map([[1, 2], [2, 4], [4, 8]]))).toEqual([[1, 2], [2, 4], [4, 8]]);
 				expect(f(1, 2, 3)).toEqual([1,2,3]);
-				expect(Array.from([1, 2, 3], x => x + x)).toEqual([2,4,6]);
+				expect(Array.from([1, 2, 3], x => x + x)).toEqual([2, 4, 6]);
 				expect(Array.from({length: 5}, (v, i) => i)).toEqual([0, 1, 2, 3, 4]);
 			});
 		});
@@ -219,6 +219,19 @@
 				expect([1, 2, 3].includes(3, 3)).toEqual(false);
 				expect([1, 2, 3].includes(3, -1)).toEqual(true);
 				expect([1, 2, NaN].includes(NaN)).toEqual(true);
+			});
+		});
+
+		describe("Array.prototype.indexOf()", () => 
+		{
+			it("should return the first index at which a given element can be found in the array, or -1 if it is not present", () =>
+			{
+				const array = [2, 9, 9];
+				expect(array.indexOf(2)).toEqual(0);
+				expect(array.indexOf(7)).toEqual(-1);
+				expect(array.indexOf(9, 2)).toEqual(2);
+				expect(array.indexOf(2, -1)).toEqual(-1);
+				expect(array.indexOf(2, -3)).toEqual(0);
 			});
 		});
 
