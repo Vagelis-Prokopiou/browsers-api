@@ -353,5 +353,40 @@
 			});
 		});
 
+		describe("Array.prototype.reduce()", () =>
+		{
+			it("should apply a function against an accumulator and each element in the array (from left to right) to reduce it to a single value", () =>
+			{
+				var total = [0, 1, 2, 3].reduce(function (sum, value)
+				{
+					return sum + value;
+				}, 0);
+
+				var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function (a, b)
+				{
+					return a.concat(b);
+				}, []);
+				var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+				var countedNames = names.reduce(function (allNames, name)
+				{
+					if (name in allNames)
+					{
+						allNames[name]++;
+					}
+					else
+					{
+						allNames[name] = 1;
+					}
+					return allNames;
+				}, {});
+
+				expect(total).toEqual(6);
+				expect(flattened).toEqual([0, 1, 2, 3, 4, 5]);
+				expect([0, 1, 2, 3, 4].reduce((prev, curr) => prev + curr)).toEqual(10);
+				expect(countedNames).toEqual({ 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 });
+			});
+		});
+
 	});
 })();
