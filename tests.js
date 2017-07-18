@@ -247,5 +247,26 @@
 			});
 		});
 
+		describe("Array.prototype.keys()", () => 
+		{
+			it("should return a new Array Iterator that contains the keys for each index in the array", () =>
+			{
+				const arr = ['a', 'b', 'c'];
+				const iterator = arr.keys();
+				
+				expect(iterator.next()).toEqual({ value: 0, done: false });
+				expect(iterator.next()).toEqual({ value: 1, done: false });
+				expect(iterator.next()).toEqual({ value: 2, done: false });
+				expect(iterator.next()).toEqual({ value: undefined, done: true });
+
+				const a = ['a', , 'c'];
+				const sparseKeys = Object.keys(a);
+				const denseKeys = [...a.keys()];
+				
+				expect(sparseKeys).toEqual(['0', '2']);
+				expect(denseKeys).toEqual([0, 1, 2]);
+			});
+		});
+
 	});
 })();
