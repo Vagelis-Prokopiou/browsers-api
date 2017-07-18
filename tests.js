@@ -302,9 +302,25 @@
 
 				expect(numbers).toEqual([1, 4, 9]);
 				expect(roots).toEqual([1, 2, 3]);
-				
+
 				expect(kvArray).toEqual([ {key: 1, value: 10}, {key: 2, value: 20}, {key: 3, value: 30} ]);
 				expect(reformattedArray).toEqual([{1: 10}, {2: 20}, {3: 30}]);
+			});
+		});
+
+		describe("Array.prototype.pop()", () => 
+		{
+			it("should remove the last element from an array and return that element", () =>
+			{
+				let a = [1, 2, 3];
+				a.pop();
+				expect(a).toEqual([1, 2]);
+
+				let myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+				let popped = myFish.pop();
+
+				expect(myFish).toEqual(['angel', 'clown', 'mandarin' ]);
+				expect(popped).toEqual('sturgeon');
 			});
 		});
 
