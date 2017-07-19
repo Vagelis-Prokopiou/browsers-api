@@ -447,9 +447,32 @@
 				var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
 				var shifted = myFish.shift();
 
-
 				expect(myFish).toEqual(['clown', 'mandarin', 'surgeon']);
 				expect(shifted).toEqual('angel');
+			});
+		});
+
+		fdescribe("Array.prototype.slice()", () =>
+		{
+			it("should return a shallow copy of a portion of an array into a new array object selected from begin to end (end not included). The original array will not be modified.", () =>
+			{
+				var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+				var citrus = fruits.slice(1, 3);
+				var myHonda = { color: 'red', wheels: 4, engine: { cylinders: 4, size: 2.2 } };
+				var myCar = [myHonda, 2, 'cherry condition', 'purchased 1997'];
+				var newCar = myCar.slice(0, 2);
+
+				expect(fruits).toEqual(['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']);
+				expect(citrus).toEqual(['Orange', 'Lemon']);
+				expect(JSON.stringify(myCar)).toEqual('[{"color":"red","wheels":4,"engine":{"cylinders":4,"size":2.2}},2,"cherry condition","purchased 1997"]');
+				expect(JSON.stringify(newCar)).toEqual('[{"color":"red","wheels":4,"engine":{"cylinders":4,"size":2.2}},2]');
+				expect(myCar[0].color).toEqual('red');
+				expect(newCar[0].color).toEqual('red');
+
+				myHonda.color = 'purple';
+
+				expect(myCar[0].color).toEqual('purple');
+				expect(newCar[0].color).toEqual('purple');
 			});
 		});
 
