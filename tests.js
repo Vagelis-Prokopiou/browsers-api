@@ -526,5 +526,22 @@
 			});
 		});
 
+		describe("Array.prototype.sort()", () =>
+		{
+			it("should sort the elements of an array in place and return the array", () =>
+			{
+				var fruit = ['cherries', 'apples', 'bananas'];
+				fruit.sort();
+				var scores = [1, 10, 21, 2];
+				scores.sort();
+				var things = ['word', 'Word', '1 Word', '2 Words'];
+				things.sort();
+
+				expect(fruit).toEqual(['apples', 'bananas', 'cherries']);
+				expect(scores).toEqual([1, 10, 2, 21]);
+				expect(things).toEqual(['1 Word', '2 Words', 'Word', 'word']);
+			});
+		});
+
 	});
 })();
