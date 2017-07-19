@@ -543,5 +543,25 @@
 			});
 		});
 
+		describe("Array.prototype.splice()", () =>
+		{
+			it("should change the contents of an array by removing existing elements and/or adding new elements", () =>
+			{
+				var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+
+				// insert 'drum' at 2-index position
+				myFish.splice(2, 0, 'drum');
+				expect(myFish).toEqual(["angel", "clown", "drum", "mandarin", "sturgeon"]);
+
+				// remove 1 item at 2-index position (that is, "drum")
+				myFish.splice(2, 1);
+				expect(myFish).toEqual(["angel", "clown", "mandarin", "sturgeon"]);
+
+				var newFish = myFish;
+				expect(newFish).toBe(myFish);
+
+			});
+		});
+
 	});
 })();
