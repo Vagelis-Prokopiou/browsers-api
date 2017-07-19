@@ -440,5 +440,18 @@
 			});
 		});
 
+		describe("Array.prototype.shift()", () =>
+		{
+			it("should remove the first element from an array and return that element", () =>
+			{
+				var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+				var shifted = myFish.shift();
+
+
+				expect(myFish).toEqual(['clown', 'mandarin', 'surgeon']);
+				expect(shifted).toEqual('angel');
+			});
+		});
+
 	});
 })();
