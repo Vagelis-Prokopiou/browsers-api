@@ -452,7 +452,7 @@
 			});
 		});
 
-		fdescribe("Array.prototype.slice()", () =>
+		describe("Array.prototype.slice()", () =>
 		{
 			it("should return a shallow copy of a portion of an array into a new array object selected from begin to end (end not included). The original array will not be modified.", () =>
 			{
@@ -473,6 +473,56 @@
 
 				expect(myCar[0].color).toEqual('purple');
 				expect(newCar[0].color).toEqual('purple');
+			});
+		});
+
+		describe("Array.prototype.some()", () =>
+		{
+			it("should test whether some element in the array passes the test implemented by the provided function", () =>
+			{
+				var fruits = ['apple', 'banana', 'mango', 'guava'];
+				var TRUTHY_VALUES = [true, 'true', 1, '1'];
+
+				const getBoolean = function(a)
+				{
+					'use strict';
+
+					var value = a;
+
+					if (typeof value === 'string')
+					{
+						value = value.toLowerCase().trim();
+					}
+
+					return TRUTHY_VALUES.some(function(t)
+					{
+						return t === value;
+					});
+				}
+
+				const isBiggerThan10 = function(element, index, array)
+				{
+					return element > 10;
+				}
+				const checkAvailability = function(arr, val)
+				{
+					return arr.some(function(arrVal)
+					{
+						return val === arrVal;
+					});
+				}
+
+				expect([2, 5, 8, 1, 4].some(isBiggerThan10)).toBe(false);
+				expect([12, 5, 8, 1, 4].some(isBiggerThan10)).toBe(true);
+				expect([2, 5, 8, 1, 4].some(x => x > 10)).toBe(false);
+				expect([12, 5, 8, 1, 4].some(x => x > 10)).toBe(true);
+				expect(checkAvailability(fruits, 'kela')).toBe(false);
+				expect(checkAvailability(fruits, 'banana')).toBe(true);
+				expect(getBoolean(false)).toBe(false);
+				expect(getBoolean('false')).toBe(false);
+				expect(getBoolean(1)).toBe(true);
+				expect(getBoolean('true')).toBe(true);
+				expect(getBoolean('1')).toBe(true);
 			});
 		});
 
