@@ -1,12 +1,27 @@
 (function()
 {
-	const isBigEnough = element =>
+	fdescribe("Infinity", () =>
 	{
-		return element >= 15;
-	}
+		it("should return Infinity", () =>
+		{
+			expect(Infinity).toEqual(Infinity);
+			expect(Infinity + 1).toEqual(Infinity);
+			expect(Math.pow(10, 1000)).toEqual(Infinity);
+			expect(Math.log(0)).toEqual(-Infinity);
+		});
+
+		it("1/Infinit should return 0", () =>
+		{
+			expect(1 / Infinity).toEqual(0);
+		});
+	});
 
 	describe("Array", () =>
 	{
+		const isBigEnough = element =>
+		{
+			return element >= 15;
+		}
 
 		describe("Array.length", () =>
 		{
@@ -560,6 +575,33 @@
 				var newFish = myFish;
 				expect(newFish).toBe(myFish);
 
+			});
+		});
+
+		describe("Array.prototype.unshift()", () =>
+		{
+			it("should add one or more elements to the beginning of an array and returns the new length of the array", () =>
+			{
+				var a = [1, 2, 3];
+				a.unshift(4, 5);
+				expect(a).toEqual([4, 5, 1, 2, 3]);
+
+				a.unshift([-3]);
+				expect(a).toEqual([[-3], 4, 5, 1, 2, 3]);
+			});
+		});
+
+		describe("Array.prototype.values()", () =>
+		{
+			it("should return a new Array Iterator object that contains the values for each index in the array", () =>
+			{
+				var a = ['w', 'y', 'k', 'o', 'p'];
+				var iterator = a.values();
+				expect(iterator.next()).toEqual('w');
+				expect(iterator.next()).toEqual('y');
+				expect(iterator.next()).toEqual('k');
+				expect(iterator.next()).toEqual('o');
+				expect(iterator.next()).toEqual('p');
 			});
 		});
 
