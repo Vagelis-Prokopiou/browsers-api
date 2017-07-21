@@ -1,6 +1,6 @@
 (function()
 {
-	fdescribe("Infinity", () =>
+	describe("Infinity", () =>
 	{
 		it("should return Infinity", () =>
 		{
@@ -13,6 +13,22 @@
 		it("1/Infinit should return 0", () =>
 		{
 			expect(1 / Infinity).toEqual(0);
+		});
+	});
+
+	describe("NaN", () =>
+	{
+		it("should be NaN...", () =>
+		{
+			function valueIsNaN(v) { return v !== v; }
+
+			expect(NaN === NaN).toEqual(false);
+			expect(Number.NaN === NaN).toEqual(false);
+			expect(isNaN(NaN)).toEqual(true);
+			expect(isNaN(Number.NaN)).toEqual(true);
+			expect(valueIsNaN(1)).toEqual(false);
+			expect(valueIsNaN(NaN)).toEqual(true);
+			expect(valueIsNaN(Number.NaN)).toEqual(true);
 		});
 	});
 
@@ -591,7 +607,7 @@
 			});
 		});
 
-		describe("Array.prototype.values()", () =>
+		xdescribe("Array.prototype.values()", () =>
 		{
 			it("should return a new Array Iterator object that contains the values for each index in the array", () =>
 			{
