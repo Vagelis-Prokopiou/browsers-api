@@ -5,12 +5,15 @@ module.exports = function(config)
     basePath: './',
     frameworks: ['jasmine'],
     browsers: ['Chrome', 'Firefox'],
-    files: ['tests.js'],
+    files: [
+      'tests.js',
+      'predicates.js'
+    ],
     reporters: ['progress', 'coverage'],
     preprocessors: {
-      // source files, that you wanna generate coverage for 
-      // do not include tests or libraries 
-      // (these files will be instrumented by Istanbul) 
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
       'tests.js': ['coverage']
     },
     coverageReporter: {
