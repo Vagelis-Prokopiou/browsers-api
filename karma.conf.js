@@ -6,8 +6,10 @@ module.exports = function(config)
     frameworks: ['jasmine'],
     browsers: ['Chrome', 'Firefox'],
     files: [
-      'tests.js',
-      'predicates.js'
+      'js/tdd.js',
+      'test/tdd-tests.js',
+      'test/browser-tests.js',
+      'test/predicates.js'
     ],
     reporters: ['progress', 'coverage'],
     preprocessors: {
